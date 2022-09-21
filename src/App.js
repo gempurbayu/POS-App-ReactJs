@@ -6,6 +6,7 @@ import styled from "styled-components";
 import ProductCard from "./components/ProductCard";
 import { useSelector } from "react-redux";
 import CartItem from "./components/CartItem";
+import ListMenu from "./components/ListMenu";
 
 const Container = styled.div`
   display: flex;
@@ -40,7 +41,7 @@ const App = () => {
       <Header/>
       <Container>
         <MenuContainer>
-          Menu
+          <ListMenu/>
         </MenuContainer>
 
         <ProductContainer>
