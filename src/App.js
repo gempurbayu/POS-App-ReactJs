@@ -1,70 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-
-const theme = {
-  primary: "green",
-  secondary: "blue",
-}
+import React from "react";
+import Header from "./components/Header"
+import { ThemeProvider } from "styled-components";
+import * as theme from "./styled/theme";
+import styled from "styled-components";
 
 const Container = styled.div`
-  text-align: center;
+  display: flex;
+  width: 100vw;
+  height: 92vh;
 `
-const Head =  styled.h1`
-  color: ${props => props.theme.primary};
+const MenuContainer = styled.div`
+  width: 15%;
+  padding: 0.5rem 0;
+  padding-right: 0.5rem;
 `
-
-const Brand =  styled.img`
-  height: 10vh;
-  margin-top: 2rem;
+const ProductContainer = styled.div`
+  width: 60%;
+  height: 100%;
+  background: ${props => props.theme.light};
+  border-left: 1px solid #f7f7f7;
+  border-right: 1px solid #f7f7f7;
+  padding: 0.5rem 0;
+  
 `
-
-const Button =  styled.button`
-  color: #fff;
-  background: ${props => props.primary ? "blue" : "green"};
-  padding: 0.5rem 1rem;
-  border: none;
-  margin: 0 1rem;
-`
-
-const TomatoButton = styled(Button)`
-  background: tomato;
-`
-const Wrapper = styled.div`
-  background: yellow;
-  &.test{
-    background: orange;
-  }
+const CartContainer = styled.div`
+  width: 25%;
+  padding: 0.5rem 0;
 `
 
-const AnotherButton = styled.button`
-  ${props => {
-    switch(props.variant){
-      case "primary":
-        return `background: blue`
-      case "success":
-        return `background: green`
-      default:
-        return `background: grey`
-    }
-  }}
-`
-function App() {
-  return (
+const App = () => {
+  return(
     <ThemeProvider theme={theme}>
+      <Header/>
       <Container>
-        <Brand src={logo} alt="logo"/>
-        <Head>Styled Component</Head>
-        <Button>Primary</Button>
-        <Button primary>Primary</Button>
-        <TomatoButton>Tomato</TomatoButton>
-        <Wrapper>Biasa</Wrapper>
-        <Wrapper className="test">with class</Wrapper>
-        <AnotherButton variant='success'>Another</AnotherButton>
+        <MenuContainer>
+          Menu
+        </MenuContainer>
+
+        <ProductContainer>
+          Product
+        </ProductContainer>
+
+        <CartContainer>
+         Cart
+        </CartContainer>
       </Container>
     </ThemeProvider>
-  );
+  )
 }
 
 export default App;
