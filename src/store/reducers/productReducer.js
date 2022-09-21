@@ -6,9 +6,21 @@ const initialState = {
 }
 
 const productReducer = (state = initialState, action) => {
-    switch(action.type){
+    const {type, payload} = action
+    switch(type){
         default:
             return state
+        case "ADD_TO_CART":
+            const itemInCart = state.carts.find(item => item.id === payload)
+            const newItemCart = state.products.find(item => item.id === payload)
+            if(!itemInCart){
+                return {
+                    ...state,
+                    carts: [...state.carts, newItemCart]
+                }
+            } else {
+                return state
+            }
     }
 }
 
