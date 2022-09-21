@@ -13,7 +13,7 @@ const CardImg = styled.img`
 
 const NamePrice = styled.div`
     display: flex;
-    justify-content: space.between;
+    justify-content: space-between;
 `
 
 const ProductCard = ({ item }) => {
