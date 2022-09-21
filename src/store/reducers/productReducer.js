@@ -21,7 +21,40 @@ const productReducer = (state = initialState, action) => {
             } else {
                 return state
             }
+        case "INCREMENT":
+            const originalPrice = state.products.find(item => item.id === payload).price
+            const incCarts = state.carts.map(item => {
+                if(item.id === payload){
+                    return {
+                        ...item,
+                        price: item.price + originalPrice
+                    }
+                } else {
+                    return item
+                }
+            })
+            return {
+                ...state,
+                carts: incCarts
+            }
+            case "DECREMENT":
+                const originalPriceDec = state.products.find(item => item.id === payload).price
+                const decCarts = state.carts.map(item => {
+                    if(item.id === payload){
+                        return {
+                            ...item,
+                            price: item.price - originalPriceDec
+                        }
+                    } else {
+                        return item
+                    }
+                })
+                return {
+                    ...state,
+                    carts: decCarts
+                }
     }
+            
 }
 
 export default productReducer
